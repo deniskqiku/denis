@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Faqja e Logimit</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mirësevini në Faqen e Logimit</h1>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Emri:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Fjalëkalimi:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="button" onclick="checkLogin()">Hyr</button>
+        </form>
+    </div>
+
+    <script>
+        function checkLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "admin") {
+                window.location.href = "admin-page.html";
+            } else if (username === "user" && password === "user") {
+                window.location.href = "user-page.html";
+            } else {
+                alert("Emri ose fjalekalimi i gabuar. Provoni përsëri.");
+            }
+        }
+    </script>
+</body>
+
+</html>
