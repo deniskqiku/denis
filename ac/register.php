@@ -1,4 +1,22 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="admin-container">
+<form action="register.php" method="post">
+            <label for="newUsername">New Username:</label>
+            <input type="text" id="newUsername" name="newUsername" required><br><br>
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required><br><br>
+            <input type="submit" value="Register">
+           
+        </form>
+</body>
+</html><?php
 // Establish a MySQL connection (replace with your database credentials)
 $servername = "localhost";
 $username = "root";

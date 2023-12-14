@@ -6,32 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            padding: 0;
+            background-color: #333;
+            color: #fff;
         }
 
-        .admin-container {
-            background-color: #1f1f1f;
-            padding: 80px;
-            border-radius: 20px;
+        .sidebar {
             width: 250px;
+            height: 100vh;
+            background-color: #333;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 15px;
             text-align: center;
         }
 
-        h2 {font-size: 40px;
-            margin-bottom: 20px;
+        .sidebar li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
         }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
+        .sidebar li a:hover {
+            background-color: #555;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            background-color: #222; /* Set a slightly lighter background color for the content area */
+        }
+
+        /* Additional styles for the content */
+        .content h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            color: #555;
         }
 
         input[type="text"],
@@ -79,23 +111,47 @@
     background-color: #45a049;
 }
     </style>
+
+
+<script>
+        // Function to load content using XMLHttpRequest
+        function loadContent(url, targetElement) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.querySelector(targetElement).innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+
+        // Function to load assign_work.php content
+        function loadAssignWork() {
+            loadContent("assign_work.php", ".content");
+        }
+
+        // Function to load register.php content
+        function loadRegister() {
+            loadContent("register.php", ".content");
+        }
+    </script>
 </head>
 
-
 <body>
-    <div class="admin-container">
-        <h2>Pershendetje, Admin!</h2>
-        <h4>Regjistroni perdorues te ri!</h4>
-        
-        <form action="register.php" method="post">
-            <label for="newUsername">New Username:</label>
-            <input type="text" id="newUsername" name="newUsername" required><br><br>
-            <label for="newPassword">New Password:</label>
-            <input type="password" id="newPassword" name="newPassword" required><br><br>
-            <input type="submit" value="Register">
-            <a href="logout.php" class="logout-button">Logout</a>
-        </form>
+
+    <div class="sidebar">
+        <h2>Paneli adminit</h2>
+        <ul>
+            <li><a href="admin.php">Home</a></li>
+            <li><a href="javascript:void(0);" onclick="loadAssignWork()">Assign Work</a></li>
+            <li><a href="javascript:void(0);" onclick="loadRegister()">Register User</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
     </div>
+    <div class="content">
+ 
+ 
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miresevini ne faqen e perdoruesit</title>
+    <title>Welcome to the User Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,31 +17,13 @@
             align-items: center;
             height: 100vh;
         }
-        .logout-button {
-   
-   background-color: #4caf50;
-   color: #ffffff;
-   border: 1px;
-   padding: 10px 20px;
-   border-radius: 5px;
-   text-decoration: none;
-   font-size: 16px;
-   transition: background-color 0.3s ease;
-   margin:30px 0 0 0;
-   display: inline-block;
-   
-}
-
-.logout-button:hover {
-   background-color: #45a049;
-}
 
         .container {
             text-align: center;
             background-color: #1f1f1f;
             padding: 20px;
             border-radius: 10px;
-           
+            
         }
 
         h1 {
@@ -55,10 +37,30 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Miresevini ne faqen e perdoruesit</h1>
-        <p>Shijoni pervojen tuaj ne faqen time!</p>
-        <a href="logout.php" class="logout-button">Logout</a>
+    <h2>Assigned Work</h2>
+    <div id="assignedWork">
+        <!-- Work details will be displayed here using JavaScript -->
+    </div>
+
+    <script>
+        // Function to fetch and display assigned work for the user
+        function fetchAssignedWork() {
+            // Make an AJAX request to fetch assigned work for the user
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "get_assigned_work.php", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Display assigned work in the assignedWork div
+                    document.getElementById("assignedWork").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+
+        // Call the function to fetch assigned work when the page loads
+        fetchAssignedWork();
+    </script>
+        <a href="logout.php">Logout</a>
     </div>
 </body>
 
